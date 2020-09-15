@@ -14,7 +14,7 @@
 			<img src="images/glib_logo.png"><h4 style="display: inline; border: none;" class="ml-2 text-light">GAME LIBRARY</h4></a>
 		<span class="col-lg-5 col-md-12 form-inline float-right">
 			<a href="index.php" class="col-lg-3 col-md-12 btn"><h5 class="text-light">Home</h5></a>
-			<form method="post" class="col-lg-9 col-md-12 mx-auto">
+			<form action="index.php" method="post" class="col-lg-9 col-md-12 mx-auto">
 				<input class="col-lg-6 col-md-5 col-md-4 form-control" type="text" name="search">
 				<input class="col-lg-3 text-light" type="submit" value="Search" style="border: none; background: none; outline:inherit;">
 			</form>
@@ -23,7 +23,7 @@
 	<br><br>
 	<div class="container pt-lg-2 pb-lg-2" style="background-image: url('images/bg.png');">
 		<div class="row form-inline">
-			<form method="post">
+			<form action="index.php" method="post">
 				<button class="text-light mr-2 btn btn-secondary" type="submit" value="Open world" name="genre"><h5>Open world</h5></button>
 				<button class="text-light mr-2 btn btn-secondary" type="submit" value="Platformer" name="genre"><h5>Platformer</h5></button>
 				<button class="text-light mr-2 btn btn-secondary" type="submit" value="First person" name="genre"><h5>First person</h5></button>
@@ -37,61 +37,39 @@
 			</form>
 		</div>
 	</div>
+	<br>
+	<?php
+		include 'config/database.php';
+		$sqlCond = "SELECT * FROM game_list where Name = '".str_replace("'", "''",$_GET['game'])."'";
+		$results = mysqli_query($conn, $sqlCond);
+		if ($results)
+		{
+			while ($row = mysqli_fetch_array($results))
+			{
+				$Gname = $row['Name'];
+				$Gdev = $row['Developer'];
+				$Gdes = $row['Description'];
+				$Genre = $row['Genre'];
+				$Glink = $row['Link'];
+			}
+		}
+		else 
+		{
+			echo '<h4 class="text-light">No data available</h4>';
+		}
+	?>
 	<div class="container">
-			<?php
-				include 'config/database.php';
-				if (isset($_POST['search']))
-				{
-					if ($_POST['search'] == "")
-					{
-						$section = "All";
-						$sqlCond = "SELECT * FROM game_list";	
-					}
-					else 
-					{
-						$section = "";
-						$sqlCond = "SELECT * FROM game_list where Name = '".$_POST['search']."'";	
-					}
-				}
-				else if (isset($_POST['genre']))
-				{
-					if ($_POST['genre'] == "")
-					{
-						$section = "All";
-						$sqlCond = "SELECT * FROM game_list";	
-					}
-					else 
-					{
-						$section = $_POST['genre'];
-						$sqlCond = "SELECT * FROM game_list where Genre like '%".$_POST['genre']."%'";
-					}
-				}
-				else 
-				{
-					$section = "All";
-					$sqlCond = "SELECT * FROM game_list";	
-				}
-				$results = mysqli_query($conn, $sqlCond);
-
-				echo '<h4 class="text-light">'.$section.' GAMES</h4><div class="row">';
-
-				if ($results)
-				{
-					while ($row = mysqli_fetch_array($results))
-					{
-						echo '<div class="col-lg-4 col-md-6">
-							<a href="game_page.php?game='.$row["Name"].'" class="btn float-left mx-auto">
-								<img src="images/'.$row["Name"].'.png">
-								<h5 class="text-light">'.$row["Name"].'</h5>
-							</a>
-						</div>';
-					}
-				}
-				else 
-				{
-					echo '<h4 class="text-light">No data available</h4>';
-				}
-			?>
+		<div class="row bg-dark" style="background-image: url('images/<?php echo preg_replace("/'/", "",$Gname);?>wallpaper.png'); background-size: cover;">
+			<div class="col-lg-4 col-md-6">
+			<img src="images/<?php echo $Gname;?>.png">
+			<h5 class="text-light"><?php echo $Gname?></h5>
+			</div>
+			<div class="col-lg-8 col-md-6 mt-lg-3">
+			<p class="text-light"><?php echo $Gdes?></p>
+			<h5 class="text-light">Developer:</h5><p class="text-light"><?php echo $Gdev?></p>
+			<h5 class="text-light">Genre:</h5><p class="text-light"><?php echo $Genre?></p>
+			<a href="<?php echo $Glink;?>"><h5 class="text-light">Download Here</h5><img src="images/steam.png"/></a>
+			</div>
 		</div>
 	</div>
 	<br><br>
