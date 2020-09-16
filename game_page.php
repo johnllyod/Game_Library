@@ -24,20 +24,34 @@
 	<br><br>
 	<div class="container pt-lg-2 pb-lg-2" style="background-image: url('images/bg.png');">
 		<div class="row form-inline">
-			<div class="">
-				<form action="index.php" method="post">
-					<button class="text-light mr-2 btn btn-secondary" type="submit" value="" name="genre"><h5>All</h5></button>
-					<button class="text-light mr-2 btn btn-secondary" type="submit" value="Open world" name="genre"><h5>Open world</h5></button>
-					<button class="text-light mr-2 btn btn-secondary" type="submit" value="Platformer" name="genre"><h5>Platformer</h5></button>
-					<button class="text-light mr-2 btn btn-secondary" type="submit" value="First person" name="genre"><h5>First person</h5></button>
-					<button class="text-light mr-3 btn btn-secondary" type="submit" value="Stealth" name="genre"><h5>Stealth</h5></button>
-					<button class="text-light mr-3 btn btn-secondary" type="submit" value="Action" name="genre"><h5>Action</h5></button>
-					<button class="text-light mr-2 btn btn-secondary" type="submit" value="Singleplayer" name="genre"><h5>Singleplayer</h5></button>
-					<button class="text-light mr-2 btn btn-secondary" type="submit" value="Multiplayer" name="genre"><h5>Multiplayer</h5></button>
-					<button class="text-light mr-2 btn btn-secondary" type="submit" value="VR" name="genre"><h5>VR</h5></button>
-					<button class="text-light mr-2 btn btn-secondary" type="submit" value="RPG" name="genre"><h5>RPG</h5></button>
-				</form>
-			</div>
+			<form method="post" class="mx-auto">
+				<div class="dropdown d-md-none mt-5 mb-5 pt-5">
+					<button class="col-12 btn btn-outline-secondary btn-md dropdown-toggle text-light" data-toggle="dropdown" id="dropmenu" aria-haspopup="true" aria-expanded="false">Genre</button>
+					<div class="dropdown-menu bg-dark" aria-labelledby="dropmenu" x-placement="bottom-start" style="position: absolute;will-change: transform; top: 0px; left: 0px; transform: translate3d(63px, 31px, 0px);">
+						<button class="dropdown-item text-light mr-2 btn btn-dark" type="submit" value="" name="genre"><h5>All</h5></button>
+						<button class="dropdown-item text-light mr-2 btn btn-dark" type="submit" value="Open world" name="genre"><h5>Open world</h5></button>
+						<button class="dropdown-item text-light mr-2 btn btn-secondary" type="submit" value="Platformer" name="genre"><h5>Platformer</h5></button>
+						<button class="dropdown-item text-light mr-2 btn btn-secondary" type="submit" value="First person" name="genre"><h5>First person</h5></button>
+						<button class="dropdown-item text-light mr-3 btn btn-secondary" type="submit" value="Stealth" name="genre"><h5>Stealth</h5></button>
+						<button class="dropdown-item text-light mr-3 btn btn-secondary" type="submit" value="Action" name="genre"><h5>Action</h5></button>
+						<button class="dropdown-item text-light mr-2 btn btn-secondary" type="submit" value="Singleplayer" name="genre"><h5>Singleplayer</h5></button>
+						<button class="dropdown-item text-light mr-2 btn btn-secondary" type="submit" value="Multiplayer" name="genre"><h5>Multiplayer</h5></button>
+						<button class="dropdown-item text-light mr-2 btn btn-secondary" type="submit" value="VR" name="genre"><h5>VR</h5></button>
+						<button class="dropdown-item text-light mr-2 btn btn-secondary" type="submit" value="RPG" name="genre"><h5>RPG</h5></button>
+					</div>
+				</div>
+				<div class="col-md-12 d-none d-md-block">
+					<button class="text-light mr-1 mt-1 btn btn-secondary" type="submit" value="" name="genre"><h5>All</h5></button>
+					<button class="text-light mr-1 mt-1 btn btn-secondary" type="submit" value="Open world" name="genre"><h5>Open world</h5></button>
+					<button class="text-light mr-1 mt-1 btn btn-secondary" type="submit" value="Platformer" name="genre"><h5>Platformer</h5></button>
+					<button class="text-light mr-1 mt-1 btn btn-secondary" type="submit" value="First person" name="genre"><h5>First person</h5></button>
+					<button class="text-light mr-1 mt-1 btn btn-secondary" type="submit" value="Stealth" name="genre"><h5>Stealth</h5></button>
+					<button class="text-light mr-1 mt-1 btn btn-secondary" type="submit" value="Action" name="genre"><h5>Action</h5></button>
+					<button class="text-light mr-1 mt-1 btn btn-secondary" type="submit" value="Singleplayer" name="genre"><h5>Singleplayer</h5></button>
+					<button class="text-light mr-1 mt-1 btn btn-secondary" type="submit" value="Multiplayer" name="genre"><h5>Multiplayer</h5></button>
+					<button class="text-light mr-1 mt-1 btn btn-secondary" type="submit" value="VR" name="genre"><h5>VR</h5></button>
+					<button class="text-light mr-1 mt-1 btn btn-secondary" type="submit" value="RPG" name="genre"><h5>RPG</h5></button>
+			</form>
 		</div>
 	</div>
 	<br>
