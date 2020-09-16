@@ -24,18 +24,20 @@
 	<br><br>
 	<div class="container pt-lg-2 pb-lg-2" style="background-image: url('images/bg.png');">
 		<div class="row form-inline">
-			<form action="index.php" method="post">
-				<button class="text-light mr-2 btn btn-secondary" type="submit" value="Open world" name="genre"><h5>Open world</h5></button>
-				<button class="text-light mr-2 btn btn-secondary" type="submit" value="Platformer" name="genre"><h5>Platformer</h5></button>
-				<button class="text-light mr-2 btn btn-secondary" type="submit" value="First person" name="genre"><h5>First person</h5></button>
-				<button class="text-light mr-3 btn btn-secondary" type="submit" value="Stealth" name="genre"><h5>Stealth</h5></button>
-				<button class="text-light mr-3 btn btn-secondary" type="submit" value="Action" name="genre"><h5>Action</h5></button>
-				<button class="text-light mr-2 btn btn-secondary" type="submit" value="Singleplayer" name="genre"><h5>Singleplayer</h5></button>
-				<button class="text-light mr-2 btn btn-secondary" type="submit" value="Multiplayer" name="genre"><h5>Multiplayer</h5></button>
-				<button class="text-light mr-2 btn btn-secondary" type="submit" value="VR" name="genre"><h5>VR</h5></button>
-				<button class="text-light mr-2 btn btn-secondary" type="submit" value="RPG" name="genre"><h5>RPG</h5></button>
-				<button class="text-light mr-2 btn btn-secondary" type="submit" value="" name="genre"><h5>All</h5></button>
-			</form>
+			<div class="">
+				<form action="index.php" method="post">
+					<button class="text-light mr-2 btn btn-secondary" type="submit" value="" name="genre"><h5>All</h5></button>
+					<button class="text-light mr-2 btn btn-secondary" type="submit" value="Open world" name="genre"><h5>Open world</h5></button>
+					<button class="text-light mr-2 btn btn-secondary" type="submit" value="Platformer" name="genre"><h5>Platformer</h5></button>
+					<button class="text-light mr-2 btn btn-secondary" type="submit" value="First person" name="genre"><h5>First person</h5></button>
+					<button class="text-light mr-3 btn btn-secondary" type="submit" value="Stealth" name="genre"><h5>Stealth</h5></button>
+					<button class="text-light mr-3 btn btn-secondary" type="submit" value="Action" name="genre"><h5>Action</h5></button>
+					<button class="text-light mr-2 btn btn-secondary" type="submit" value="Singleplayer" name="genre"><h5>Singleplayer</h5></button>
+					<button class="text-light mr-2 btn btn-secondary" type="submit" value="Multiplayer" name="genre"><h5>Multiplayer</h5></button>
+					<button class="text-light mr-2 btn btn-secondary" type="submit" value="VR" name="genre"><h5>VR</h5></button>
+					<button class="text-light mr-2 btn btn-secondary" type="submit" value="RPG" name="genre"><h5>RPG</h5></button>
+				</form>
+			</div>
 		</div>
 	</div>
 	<br>
@@ -61,15 +63,15 @@
 	?>
 	<div class="container">
 		<div class="row bg-dark" style="background-image: url('images/<?php echo preg_replace("/'/", "",$Gname);?>wallpaper.png'); background-size: cover;">
-			<div class="col-lg-4 col-md-6">
-			<img src="images/<?php echo $Gname;?>.png">
-			<h5 class="text-light"><?php echo $Gname?></h5>
+			<div class="col-lg-4 col-md-12">
+				<img src="images/<?php echo $Gname;?>.png">
+				<h5 class="text-light"><?php echo $Gname?></h5>
 			</div>
-			<div class="col-lg-8 col-md-6 mt-lg-3">
-			<p class="text-light"><?php echo $Gdes?></p>
-			<h5 class="text-light">Developer:</h5><p class="text-light"><?php echo $Gdev?></p>
-			<h5 class="text-light">Genre:</h5><p class="text-light"><?php echo $Genre?></p>
-			<a href="<?php echo $Glink;?>"><h5 class="text-light">Download Here</h5><img src="images/steam.png"/></a>
+			<div class="col-lg-8 col-md-12 mt-lg-3 mt-md-1">
+				<p class="text-light"><?php echo $Gdes?></p>
+				<h5 class="text-light">Developer:</h5><p class="text-light"><?php echo $Gdev?></p>
+				<h5 class="text-light">Genre:</h5><p class="text-light"><?php echo $Genre?></p>
+				<a href="<?php echo $Glink;?>"><h5 class="text-light">Download Here</h5><img src="images/steam.png"/></a>
 			</div>
 		</div>
 	</div>
