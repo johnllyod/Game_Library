@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-</html>
 <html>
 <head>
 	<title>Game Library</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" href="images/glib_logo.png">
+	
 	<link rel="stylesheet" type="text/css" href="bootstrap-4.5.2-dist\css\bootstrap.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -13,13 +13,31 @@
 	<div class="container pt-lg-2 pb-lg-2" style="background-image: url('images/Border.png');">
 		<a href="index.php" class="col-lg-4 col-md-12 mr-lg-3">
 			<img src="images/glib_logo.png"><h4 style="display: inline; border: none;" class="ml-2 text-light">GAME LIBRARY</h4></a>
-		<span class="col-lg-5 col-md-12 form-inline float-right">
-			<a href="index.php" class="col-lg-3 col-md-12 btn"><h5 class="text-light">Home</h5></a>
-			<form action="index.php" method="post" class="col-lg-9 col-md-12 mx-auto">
-				<input class="col-lg-6 col-md-5 col-md-4 form-control" type="text" name="search">
-				<input class="col-lg-3 text-light" type="submit" value="Search" style="border: none; background: none; outline:inherit;">
-			</form>
+		<span class="col-lg-4 col-md-12 form-inline float-right">
+			<span class="col-lg-3"></span>
+			<a href="index.php" class="btn"><h5 class="text-light">Home</h5></a>
+			<?php
+				session_start();
+				if (isset($_SESSION['user']))
+				{
+					echo '<a href="profile.php" class="btn"><h5 class="text-light">'.$_SESSION['user'].'</h5></a>
+					<a href="login_reg.php?id=2" class="btn"><h5 class="text-light">Logout</h5></a>';
+				}
+				else 
+				{
+					echo '<a href="login_reg.php?id=0" class="btn"><h5 class="text-light">Login</h5></a>
+					<a href="login_reg.php?id=1" class="btn"><h5 class="text-light">Register</h5></a>';	
+				}
+			?>
 		</span>
+	</div>
+	<div class="container mt-lg-3">
+		<div class="col-lg-5"></div>
+		<form method="post" class="col-lg-7 col-md-12 form-inline float-right">
+			<span class=" col-md-6"></span>
+			<input class="col-md-4 col-sm-4 form-control" type="text" name="search">
+			<input class="col-md-2 col-sm-8 text-light" type="submit" value="Search" style="border: none; background: none; outline:inherit;">
+		</form>
 	</div>
 	<br><br>
 	<div class="container pt-lg-2 pb-lg-2" style="background-image: url('images/bg.png');">
@@ -40,7 +58,7 @@
 						<button class="dropdown-item text-light mr-2 btn btn-secondary" type="submit" value="RPG" name="genre"><h5>RPG</h5></button>
 					</div>
 				</div>
-				<div class="col-md-12 d-none d-md-block">
+				<div class="d-none d-md-block d-flex flex-row">
 					<button class="text-light mr-1 mt-1 btn btn-secondary" type="submit" value="" name="genre"><h5>All</h5></button>
 					<button class="text-light mr-1 mt-1 btn btn-secondary" type="submit" value="Open world" name="genre"><h5>Open world</h5></button>
 					<button class="text-light mr-1 mt-1 btn btn-secondary" type="submit" value="Platformer" name="genre"><h5>Platformer</h5></button>
