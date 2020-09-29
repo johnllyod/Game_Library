@@ -13,7 +13,7 @@
 <body class="bg-dark" style="background-image: url('images/bg.png');">
 	<center><div class="bg-success text-light successNotif" id="caution"></div></center>
 	<?php session_start();
-		include 'Add.php';
+		include 'Change.php';
 		include 'Remove.php';?>
 	<div class="container pt-lg-2 pb-lg-2" style="background-image: url('images/Border.png');">
 		<a href="index.php" class="col-md-4 col-sm-12">
@@ -41,11 +41,21 @@
 			include 'config/database.php';
 			if (isset($_SESSION['user']))
 			{
-				echo"
-					<h4 class='mb-lg-3'>Profile</h4>
-					<h5 class='mb-lg-3'>".$_SESSION['user']."</h4>
-					<h5 class='ml-lg-2'>Favorites</h5>
-				";
+				echo"<h4 class='mb-lg-3'>Profile</h4>";
+				if (isset($_GET['id']))
+				{	
+					echo'<form action="profile.php" method="post">
+						<h4>New username</h4>
+						<input type="text" name="newUsername" required></input>
+						<input type="submit" name="changeUser" value="Submit" class="btn btn-dark"></input>
+					</form>
+					<a href="profile.php" class="bg-danger text-light">Cancel</a>';
+				}
+				else 
+				{
+					echo"<h5 class='mb-lg-3 float-left'>".$_SESSION['user']."</h5><a href='profile.php?id=1' class='bg-danger text-light ml-1'>Change</a>";
+				}
+				echo "<h5 class='ml-lg-2'>Favorites</h5>";
 
 				$sqlUserCond = "SELECT * FROM accounts where Username = '".$_SESSION['user']."'";
 				$sqlUserQuery = mysqli_query($conn, $sqlUserCond);

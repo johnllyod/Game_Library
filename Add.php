@@ -28,22 +28,23 @@
 									$userFav = $row['Favorites'];
 								}
 							}
+							
 							echo '<script type="text/javascript">
-									function ShowNotif()
-									{
-										document.getElementById("caution").style.display="block";
-										document.getElementById("caution").innerHTML="Successfully added to favorites";
-										document.getElementById("caution").className="bg-success text-light successNotif";
-									}
+								function ShowNotif()
+								{
+									document.getElementById("caution").style.display="block";
+									document.getElementById("caution").innerHTML="Successfully added to favorites";
+									document.getElementById("caution").className="bg-success text-light successNotif";
+								}
 
-									function RemoveNotif()
-									{
-										setTimeout(
-											function(){
-												document.getElementById("caution).style.display="none";
-											}, 5000);
-									}
-								</script>';
+								function RemoveNotif()
+								{
+									setTimeout(
+										function(){
+											document.getElementById("caution").style.display="none";
+										}, 5000);
+								}
+							</script>';
 							echo'<script>ShowNotif();</script>';
 							echo'<script>RemoveNotif();</script>';
 						}
@@ -62,21 +63,21 @@
 								}
 							}
 							echo '<script type="text/javascript">
-									function ShowNotif()
-									{
-										document.getElementById("caution").style.display="block";
-										document.getElementById("caution").innerHTML="Successfully added to favorites";
-										document.getElementById("caution").className="bg-success text-light successNotif";
-									}
+								function ShowNotif()
+								{
+									document.getElementById("caution").style.display="block";
+									document.getElementById("caution").innerHTML="Successfully added to favorites";
+									document.getElementById("caution").className="bg-success text-light successNotif";
+								}
 
-									function RemoveNotif()
-									{
-										setTimeout(
-											function(){
-												document.getElementById("caution").style.display="none";
-											}, 5000);
-									}
-								</script>';
+								function RemoveNotif()
+								{
+									setTimeout(
+										function(){
+											document.getElementById("caution").style.display="none";
+										}, 5000);
+								}
+							</script>';
 							echo'<script>ShowNotif();</script>';
 							echo'<script>RemoveNotif();</script>';
 						}

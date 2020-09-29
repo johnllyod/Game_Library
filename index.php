@@ -171,7 +171,6 @@
 				{
 					echo '<h4 class="text-light">No data available</h4>';
 				}
-				echo '</div>'.$_SESSION["add"];
 			?>
 	</div>
 	<br><br>

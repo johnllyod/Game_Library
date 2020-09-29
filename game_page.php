@@ -10,6 +10,10 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body class="bg-dark" style="background-image: url('images/bg.png');">
+	<center><div class="bg-success text-light successNotif" id="caution"></div></center>
+	<?php session_start();
+		include 'Add.php';
+		include 'Remove.php';?>
 	<div class="container pt-lg-2 pb-lg-2" style="background-image: url('images/Border.png');">
 		<a href="index.php" class="col-lg-4 col-md-12 mr-lg-3">
 			<img src="images/glib_logo.png"><h4 style="display: inline; border: none;" class="ml-2 text-light">GAME LIBRARY</h4></a>
@@ -17,7 +21,6 @@
 			<span class="col-lg-3"></span>
 			<a href="index.php" class="btn"><h5 class="text-light">Home</h5></a>
 			<?php
-				session_start();
 				if (isset($_SESSION['user']))
 				{
 					echo '<a href="profile.php" class="btn"><h5 class="text-light">'.$_SESSION['user'].'</h5></a>
@@ -32,7 +35,7 @@
 		</span>
 	</div>
 	<div class="container mt-lg-3">
-		<div class="col-lg-5"></div>
+		<div class="col-lg-5 col-md-0"></div>
 		<form method="post" class="col-lg-7 col-md-12 form-inline float-right">
 			<span class=" col-md-6"></span>
 			<input class="col-md-4 col-sm-4 form-control" type="text" name="search">
@@ -42,7 +45,7 @@
 	<br><br>
 	<div class="container pt-lg-2 pb-lg-2" style="background-image: url('images/bg.png');">
 		<div class="row form-inline">
-			<form method="post" class="mx-auto">
+			<form method="post" class="">
 				<div class="dropdown d-md-none mt-5 mb-5 pt-5">
 					<button class="col-12 btn btn-outline-secondary btn-md dropdown-toggle text-light" data-toggle="dropdown" id="dropmenu" aria-haspopup="true" aria-expanded="false">Genre</button>
 					<div class="dropdown-menu bg-dark" aria-labelledby="dropmenu" x-placement="bottom-start" style="position: absolute;will-change: transform; top: 0px; left: 0px; transform: translate3d(63px, 31px, 0px);">
@@ -58,17 +61,18 @@
 						<button class="dropdown-item text-light mr-2 btn btn-secondary" type="submit" value="RPG" name="genre"><h5>RPG</h5></button>
 					</div>
 				</div>
-				<div class="d-none d-md-block d-flex flex-row">
-					<button class="text-light mr-1 mt-1 btn btn-secondary" type="submit" value="" name="genre"><h5>All</h5></button>
-					<button class="text-light mr-1 mt-1 btn btn-secondary" type="submit" value="Open world" name="genre"><h5>Open world</h5></button>
-					<button class="text-light mr-1 mt-1 btn btn-secondary" type="submit" value="Platformer" name="genre"><h5>Platformer</h5></button>
-					<button class="text-light mr-1 mt-1 btn btn-secondary" type="submit" value="First person" name="genre"><h5>First person</h5></button>
-					<button class="text-light mr-1 mt-1 btn btn-secondary" type="submit" value="Stealth" name="genre"><h5>Stealth</h5></button>
-					<button class="text-light mr-1 mt-1 btn btn-secondary" type="submit" value="Action" name="genre"><h5>Action</h5></button>
-					<button class="text-light mr-1 mt-1 btn btn-secondary" type="submit" value="Singleplayer" name="genre"><h5>Singleplayer</h5></button>
-					<button class="text-light mr-1 mt-1 btn btn-secondary" type="submit" value="Multiplayer" name="genre"><h5>Multiplayer</h5></button>
-					<button class="text-light mr-1 mt-1 btn btn-secondary" type="submit" value="VR" name="genre"><h5>VR</h5></button>
-					<button class="text-light mr-1 mt-1 btn btn-secondary" type="submit" value="RPG" name="genre"><h5>RPG</h5></button>
+				<div class="col-lg-12 d-none d-md-block">
+						<button class="text-light mr-1 mt-1 btn btn-secondary" type="submit" value="" name="genre"><h5>All</h5></button>
+						<button class="text-light mr-1 mt-1 btn btn-secondary" type="submit" value="Open world" name="genre"><h5>Open world</h5></button>
+						<button class="text-light mr-1 mt-1 btn btn-secondary" type="submit" value="Platformer" name="genre"><h5>Platformer</h5></button>
+						<button class="text-light mr-1 mt-1 btn btn-secondary" type="submit" value="First person" name="genre"><h5>First person</h5></button>
+						<button class="text-light mr-1 mt-1 btn btn-secondary" type="submit" value="Stealth" name="genre"><h5>Stealth</h5></button>
+						<button class="text-light mr-1 mt-1 btn btn-secondary" type="submit" value="Action" name="genre"><h5>Action</h5></button>
+						<button class="text-light mr-1 mt-1 btn btn-secondary" type="submit" value="Singleplayer" name="genre"><h5>Singleplayer</h5></button>
+						<button class="text-light mr-1 mt-1 btn btn-secondary" type="submit" value="Multiplayer" name="genre"><h5>Multiplayer</h5></button>
+						<button class="text-light mr-1 mt-1 btn btn-secondary" type="submit" value="VR" name="genre"><h5>VR</h5></button>
+						<button class="text-light mr-1 mt-1 btn btn-secondary" type="submit" value="RPG" name="genre"><h5>RPG</h5></button>
+				</div>
 			</form>
 		</div>
 	</div>
@@ -86,17 +90,40 @@
 				$Gdes = $row['Description'];
 				$Genre = $row['Genre'];
 				$Glink = $row['Link'];
+				$Gid = $row['Id'];
 			}
 		}
 		else 
 		{
 			echo '<h4 class="text-light">No data available</h4>';
 		}
+		
+		if (isset($_SESSION['user']))
+		{
+			$sqlUserCond = "SELECT Favorites FROM accounts where Username = '".$_SESSION['user']."'";
+			$userResults = mysqli_query($conn, $sqlUserCond);
+			if ($userResults)
+			{
+				while ($userRow = mysqli_fetch_array($userResults))
+				{
+					$userFav = $userRow['Favorites'];
+				}
+			}
+		}
 	?>
 	<div class="container">
 		<div class="row bg-dark" style="background-image: url('images/<?php echo preg_replace("/'/", "",$Gname);?>wallpaper.png'); background-size: cover;">
 			<div class="col-lg-4 col-md-12">
 				<img src="images/<?php echo $Gname;?>.png">
+				<?php
+					if (isset($_SESSION['user']))
+					{
+						if (strstr($userFav, $Gid))
+						{
+							echo'<span class="float-left"><img src="images/fav_tag.png"></span>';
+						}
+					}
+				?>
 				<h5 class="text-light"><?php echo $Gname?></h5>
 			</div>
 			<div class="col-lg-8 col-md-12 mt-lg-3 mt-md-1">
