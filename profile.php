@@ -76,7 +76,7 @@
 						{
 							while ($gameRow = mysqli_fetch_array($sqlGameQuery)) 
 							{
-								if (strstr($userFav, $gameRow["Id"]))
+								if (strstr($userFav ?? "", $gameRow["Id"]))
 								{
 									echo'<div class="col-lg-4 col-md-6 float-left">
 											<div class="gImage">
