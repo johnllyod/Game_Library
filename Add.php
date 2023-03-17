@@ -1,6 +1,6 @@
 <?php
 	include 'config/database.php';
-	$userFav = null;
+	$userFav = '';
 	if (isset($_SESSION['user']))
 	{
 		$sqlCond = "SELECT Favorites FROM accounts where Username = '".$_SESSION['user']."'";
