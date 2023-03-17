@@ -111,7 +111,7 @@
 	{
 		if (isset($_POST['fav']))
 		{
-			header("Location:login_reg.php");
+			echo "<script> window.location.replace('login_reg.php'); </script>";
 		}
 	}
 ?>

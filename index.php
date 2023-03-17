@@ -1,3 +1,9 @@
+<?php 
+	if (session_status() != PHP_SESSION_ACTIVE) 
+	{
+		session_start();
+	}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,9 +17,10 @@
 </head>
 <body class="bg-dark" style="background-image: url('images/bg.png');">
 	<center><div class="bg-success text-light successNotif" id="caution"></div></center>
-	<?php session_start();
+	<?php
 		include 'Add.php';
-		include 'Remove.php';?>
+		include 'Remove.php';
+	?>
 	<div class="container pt-lg-2 pb-lg-2" style="background-image: url('images/Border.png');">
 		<a href="index.php" class="col-lg-4 col-md-12 mr-lg-3">
 			<img src="images/glib_logo.png"><h4 style="display: inline; border: none;" class="ml-2 text-light">GAME LIBRARY</h4></a>
