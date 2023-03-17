@@ -124,7 +124,7 @@
 										<a href="game_page.php?game='.$row["Name"].'" class="btn btn-dark">
 											View Details
 										</a>';
-									if (strstr($userFav, $row["Id"]))
+									if (strpos($userFav, $row["Id"]) !== false)
 									{
 										echo '<form action="index.php" method="post"><button class="btn btn-danger addFav" type="submit" value="'.$row["Id"].'" name="removeFav">
 										Remove Favorite
@@ -144,7 +144,7 @@
 									<a href="game_page.php?game='.$row["Name"].'" class="btn btn-primary">
 										View Details
 									</a>';
-									if (strstr($userFav, $row["Id"]))
+									if (strpos($userFav, $row["Id"]) !== false)
 									{
 										echo '<form action="index.php" method="post"><button class="btn btn-danger" type="submit" value="'.$row["Id"].'" name="removeFav">
 												Remove Favorite
@@ -159,7 +159,7 @@
 											</form>';
 									}
 								echo'</div>';
-									if (strstr($userFav, $row["Id"]))
+									if (strpos($userFav, $row["Id"]) !== false)
 									{
 										echo'<span class="float-left"><img src="images/fav_tag.png"></span>';
 									}
