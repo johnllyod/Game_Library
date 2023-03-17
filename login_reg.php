@@ -1,3 +1,9 @@
+<?php 
+	if (session_status() != PHP_SESSION_ACTIVE) 
+	{
+		session_start();
+	}
+?>
 <!DOCTYPE html>
 </html>
 <html>
@@ -22,7 +28,6 @@
 	</div>
 	<div class="container mt-5">
 		<?php
-			session_start();
 			include 'config/database.php';
 			if (isset($_GET['id']))
 			{
@@ -80,25 +85,25 @@
 								{
 									$_SESSION['user'] = $row['Username'];
 									$_SESSION['loginWarning'] = null;
-									header('Location:index.php');
+									echo "<script> window.location.replace('index.php'); </script>";
 									exit();
 								}
 								else
 								{
 									$_SESSION['loginWarning'] = "Username or Password is incorrect";
-									header("Location:login_reg.php?id=0");
+									echo "<script> window.location.replace('login_reg.php?id=0'); </script>";
 								}
 							}
 							else
 							{
 								$_SESSION['loginWarning'] = "Username or Password is incorrect";
-								header("Location:login_reg.php?id=0");
+								echo "<script> window.location.replace('login_reg.php?id=0'); </script>";
 							}
 						}
 						else
 						{
 							$_SESSION['loginWarning'] = "Username or Password is incorrect";
-							header("Location:login_reg.php?id=0");
+							echo "<script> window.location.replace('login_reg.php?id=0'); </script>";
 						}
 					}
 					else 
@@ -123,7 +128,7 @@
 					{
 						$_SESSION['regWarning'] = null;
 						$_SESSION['loginWarning'] = "Registered successfully";
-						header("Location:login_reg.php?id=0", 0.5);	
+						echo "<script> window.location.replace('login_reg.php?id=0'); </script>";
 					}
 					else 
 					{

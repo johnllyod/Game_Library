@@ -1,3 +1,9 @@
+<?php 
+	if (session_status() != PHP_SESSION_ACTIVE) 
+	{
+		session_start();
+	}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +17,7 @@
 </head>
 <body class="bg-dark" style="background-image: url('images/bg.png');">
 	<center><div class="bg-success text-light successNotif" id="caution"></div></center>
-	<?php session_start();
+	<?php
 		include 'Add.php';
 		include 'Remove.php';?>
 	<div class="container pt-lg-2 pb-lg-2" style="background-image: url('images/Border.png');">
