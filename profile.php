@@ -18,13 +18,16 @@
 </head>
 <body class="bg-dark" style="background-image: url('images/bg.png');">
 	<center><div class="bg-success text-light successNotif" id="caution"></div></center>
+	
 	<?php
 		include 'Change.php';
-		include 'Remove.php';?>
+		include 'Remove.php';
+	?>
+
 	<div class="container pt-lg-2 pb-lg-2" style="background-image: url('images/Border.png');">
 		<a href="index.php" class="col-md-4 col-sm-12">
 			<img src="images/glib_logo.png"><h4 style="display: inline; border: none;" class="ml-2 text-light">GAME LIBRARY</h4></a>
-		<span class="col-lg-4 col-md-12 form-inline float-right">
+		<span class="col-lg-5 col-md-12 form-inline float-right">
 			<span class="col-lg-3"></span>
 			<a href="index.php" class="btn"><h5 class="text-light">Home</h5></a>
 			<?php
@@ -61,7 +64,7 @@
 				{
 					echo"<h5 class='mb-lg-3 float-left'>".$_SESSION['user']."</h5><a href='profile.php?id=1' class='bg-danger text-light ml-1'>Change</a>";
 				}
-				echo "<h5 class='ml-lg-2'>Favorites</h5>";
+				echo "<br><br><br><h4>Favorites</h4>";
 
 				$sqlUserCond = "SELECT * FROM accounts where Username = '".$_SESSION['user']."'";
 				$sqlUserQuery = mysqli_query($conn, $sqlUserCond);
@@ -72,12 +75,15 @@
 						$userFav = $userRow['Favorites'];
 						$sqlGameCond = "SELECT Id, Name FROM game_list";
 						$sqlGameQuery = mysqli_query($conn, $sqlGameCond);
+						
 						if ($sqlGameQuery)
 						{
+							$numFav = 0;
 							while ($gameRow = mysqli_fetch_array($sqlGameQuery)) 
 							{
 								if (strstr($userFav ?? "", $gameRow["Id"]))
 								{
+									$numFav++;
 									echo'<div class="col-lg-4 col-md-6 float-left">
 											<div class="gImage">
 												<img src="images/'.$gameRow["Name"].'.png">
@@ -109,10 +115,11 @@
 								}
 							}	
 						}
-						else 
-						{
-							echo'<h4>You do not hove any favorites yet.</h4>';
-						}
+					}
+
+					if ($numFav == 0) 
+					{
+						echo'<h4>You do not hove any favorites yet.</h4>';
 					}
 				}
 				else 

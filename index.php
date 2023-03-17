@@ -23,8 +23,9 @@
 	?>
 	<div class="container pt-lg-2 pb-lg-2" style="background-image: url('images/Border.png');">
 		<a href="index.php" class="col-lg-4 col-md-12 mr-lg-3">
-			<img src="images/glib_logo.png"><h4 style="display: inline; border: none;" class="ml-2 text-light">GAME LIBRARY</h4></a>
-		<span class="col-lg-4 col-md-12 form-inline float-right">
+			<img src="images/glib_logo.png"><h4 style="display: inline; border: none;" class="ml-2 text-light">GAME LIBRARY</h4>
+		</a>
+		<span class="col-lg-5 col-md-12 form-inline float-right">
 			<span class="col-lg-3"></span>
 			<a href="index.php" class="btn"><h5 class="text-light">Home</h5></a>
 			<?php
